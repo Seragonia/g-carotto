@@ -1,0 +1,17 @@
+{% if site.active_lang == 'en' %}
+  {% assign translations = site.data.translations.en %}
+{% elsif site.active_lang == 'es' %}
+  {% assign translations = site.data.translations.es %}
+{% elsif site.active_lang == 'fr' %}
+  {% assign translations = site.data.translations.fr %}
+{% elsif site.active_lang == 'zh' %}
+  {% assign translations = site.data.translations.zh %}
+{% elsif site.active_lang == 'id' %}
+  {% assign translations = site.data.translations.id %}
+{% elsif site.active_lang == 'fil' %}
+  {% assign translations = site.data.translations.fil %}
+{% else %}
+  {% assign translations = site.data.translations.en %}
+{% endif %}
+
+{{ site.data.translations[site.active_lang][include.t] | default: site.data.translations['en'][include.t] }} 

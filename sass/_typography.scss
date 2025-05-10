@@ -1,0 +1,150 @@
+@import 'variables';
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 $spacing-md;
+  font-family: $font-family-heading;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  color: $text-primary;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+  margin-bottom: $spacing-xl;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+  margin-bottom: $spacing-lg;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-md;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $primary;
+  transition: color $transition-base;
+  
+  &:hover {
+    color: color-mix(in srgb, $primary 90%, black);
+  }
+}
+
+.text-primary {
+  color: $primary;
+}
+
+.text-secondary {
+  color: $secondary;
+}
+
+.text-accent {
+  color: $accent;
+}
+
+.text-muted {
+  color: $text-muted;
+}
+
+.text-light {
+  color: $text-light;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
+  font-size: $font-size-xl;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.font-medium {
+  font-weight: $font-weight-medium;
+}
+
+.font-semibold {
+  font-weight: $font-weight-semibold;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.leading-tight {
+  line-height: 1.25;
+}
+
+.leading-normal {
+  line-height: 1.5;
+}
+
+.leading-loose {
+  line-height: 2;
+}
+
+blockquote {
+  padding: $spacing-md $spacing-lg;
+  margin: $spacing-lg 0;
+  border-left: 4px solid $primary;
+  background-color: rgba($primary, 0.05);
+  font-style: italic;
+}
+
+code {
+  font-family: $font-family-mono;
+  font-size: $font-size-sm;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $border-radius-sm;
+  background-color: rgba($dark, 0.05);
+}
+
+pre {
+  margin: $spacing-lg 0;
+  padding: $spacing-md;
+  border-radius: $border-radius-md;
+  background-color: $dark;
+  overflow-x: auto;
+  
+  code {
+    padding: 0;
+    background-color: transparent;
+    color: $text-light;
+  }
+} 

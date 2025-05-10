@@ -1,0 +1,100 @@
+---
+layout: default
+---
+
+<div class="page-content">
+  <div class="page-header">
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <div class="page-description">{{ page.description }}</div>
+    {% endif %}
+  </div>
+  
+  <div class="page-body">
+    {{ content }}
+  </div>
+</div>
+
+<div class="page-container">
+  <div class="container">
+    <div class="content-area">
+      <div class="page-content">
+        {{ content }}
+      </div>
+      
+      {% if page.show_share %}
+      <div class="share-buttons">
+        <span>Partager cette page :</span>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Partager sur Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url={{ page.url | absolute_url }}&text={{ page.title }}" target="_blank" rel="noopener" aria-label="Partager sur Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url }}" target="_blank" rel="noopener" aria-label="Partager sur LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </div>
+      {% endif %}
+      
+      {% if page.show_related and site.related_posts %}
+      <div class="related-posts">
+        <h3>Articles connexes</h3>
+        <ul>
+          {% for post in site.related_posts limit:3 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            <span class="post-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %}
+    </div>
+    
+    {% if page.show_sidebar %}
+    <aside class="sidebar">
+      <div class="widget widget-search">
+        <h3>Rechercher</h3>
+        <form action="{{ '/search/' | relative_url }}" method="get">
+          <input type="search" name="q" placeholder="Rechercher...">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </div>
+      
+      <div class="widget widget-categories">
+        <h3>Catégories</h3>
+        <ul>
+          <li><a href="{{ '/jeu/debuter/' | relative_url }}">Débuter</a></li>
+          <li><a href="{{ '/classes/' | relative_url }}">Classes</a></li>
+          <li><a href="{{ '/familiers/' | relative_url }}">Familiers</a></li>
+          <li><a href="{{ '/quetes/' | relative_url }}">Quêtes</a></li>
+          <li><a href="{{ '/renaissance/' | relative_url }}">Renaissance</a></li>
+          <li><a href="{{ '/divers/' | relative_url }}">Divers</a></li>
+        </ul>
+      </div>
+      
+      <div class="widget widget-recent-posts">
+        <h3>Articles récents</h3>
+        <ul>
+          {% for post in site.posts limit:5 %}
+          <li>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      
+      <div class="widget">
+        <h3>Liens utiles</h3>
+        <ul>
+          <li><a href="{{ '/familiers/fusions/' | relative_url }}">Tableaux de fusions</a></li>
+          <li><a href="{{ '/divers/po/' | relative_url }}">Avoir des po's</a></li>
+          <li><a href="{{ '/divers/xp/' | relative_url }}">XP rapidement</a></li>
+          <li><a href="{{ '/jeu/personnage/montures/' | relative_url }}">Montures</a></li>
+        </ul>
+      </div>
+    </aside>
+    {% endif %}
+  </div>
+</div> 

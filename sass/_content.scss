@@ -1,0 +1,112 @@
+@import 'variables';
+
+.content-card {
+  background-color: $card-bg;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-sm;
+  padding: $spacing-lg;
+  margin-bottom: $spacing-lg;
+  
+  @media (max-width: $breakpoint-md) {
+    padding: $spacing-md;
+  }
+}
+
+.page-title {
+  margin-bottom: $spacing-xl;
+  
+  h1 {
+    margin-bottom: $spacing-sm;
+  }
+  
+  .breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: $font-size-sm;
+    color: $text-secondary;
+    
+    a {
+      color: $text-secondary;
+      transition: color $transition-base;
+      
+      &:hover {
+        color: $primary;
+      }
+    }
+    
+    .separator {
+      margin: 0 $spacing-xs;
+    }
+    
+    .current {
+      color: $primary;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.page-summary {
+  font-size: $font-size-lg;
+  margin-bottom: $spacing-xl;
+  color: $text-secondary;
+  max-width: 800px;
+  
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing-lg;
+  margin: $spacing-xl 0;
+  
+  @media (max-width: $breakpoint-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  background-color: $card-bg;
+  border-radius: $border-radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: transform $transition-base, box-shadow $transition-base;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: $shadow-lg;
+  }
+  
+  &-image {
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  &-content {
+    padding: $spacing-md;
+  }
+  
+  &-title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-sm;
+  }
+  
+  &-description {
+    color: $text-secondary;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-md;
+  }
+  
+  &-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: $font-size-xs;
+    color: $text-muted;
+  }
+}

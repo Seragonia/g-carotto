@@ -1,0 +1,76 @@
+[
+  {
+    "title": "Classes",
+    "url": "/content/classes/",
+    "order": 999,
+    "subSections": [
+      {
+        "title": "Druid",
+        "url": "/content/classes/druid/",
+        "order": 999
+      },
+      {
+        "title": "Mage",
+        "url": "/content/classes/mage/",
+        "order": 999
+      },
+      {
+        "title": "Priest",
+        "url": "/content/classes/priest/",
+        "order": 999
+      },
+      {
+        "title": "Ranger",
+        "url": "/content/classes/ranger/",
+        "order": 999
+      },
+      {
+        "title": "Warrior",
+        "url": "/content/classes/warrior/",
+        "order": 999
+      }
+    ]
+  },
+  {
+    "title": "FAQ",
+    "url": "/content/faq/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Game",
+    "url": "/content/game/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Home",
+    "url": "/content/home/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Misc",
+    "url": "/content/misc/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Pets",
+    "url": "/content/pets/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Quests",
+    "url": "/content/quests/",
+    "order": 999,
+    "subSections": []
+  },
+  {
+    "title": "Rebirth",
+    "url": "/content/rebirth/",
+    "order": 999,
+    "subSections": []
+  }
+]

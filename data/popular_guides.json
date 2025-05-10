@@ -1,0 +1,30 @@
+[
+  {
+    "url": "/game/getting-started/",
+    "translations": {
+      "fr": "Guide du débutant",
+      "en": "Beginner's Guide"
+    }
+  },
+  {
+    "url": "/pets/pet-guide/",
+    "translations": {
+      "fr": "Guide des familiers",
+      "en": "Pet Guide"
+    }
+  },
+  {
+    "url": "/misc/easy-gold/",
+    "translations": {
+      "fr": "Comment gagner de l'or",
+      "en": "How to earn gold"
+    }
+  },
+  {
+    "url": "/classes/warrior/",
+    "translations": {
+      "fr": "Guide du Guerrier",
+      "en": "Warrior Guide"
+    }
+  }
+] 

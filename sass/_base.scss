@@ -1,0 +1,147 @@
+@import 'variables';
+
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-regular;
+  color: $text-primary;
+  background-color: $light;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: $primary;
+  color: $text-light;
+}
+
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+.page-section {
+  padding: $spacing-2xl 0;
+}
+
+.card {
+  background-color: $card-bg;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-sm;
+  overflow: hidden;
+  transition: box-shadow $transition-base;
+
+  &:hover {
+    box-shadow: $shadow-md;
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  text-align: center;
+  transition: all $transition-base;
+  
+  &-primary {
+    background-color: $primary;
+    color: $text-light;
+    
+    &:hover {
+      background-color: color-mix(in srgb, $primary 95%, black);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      background-color: color-mix(in srgb, $primary 95%, black);
+      transform: translateY(1px);
+    }
+  }
+  
+  &-secondary {
+    background-color: $secondary;
+    color: $text-light;
+    
+    &:hover {
+      background-color: color-mix(in srgb, $secondary 95%, black);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      background-color: color-mix(in srgb, $secondary 95%, black);
+      transform: translateY(1px);
+    }
+  }
+  
+  &-outline {
+    border: 1px solid $primary;
+    color: $primary;
+    
+    &:hover {
+      background-color: $primary;
+      color: $text-light;
+    }
+  }
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1px solid $border;
+  border-radius: $border-radius-md;
+  background-color: $card-bg;
+  color: $text-primary;
+  transition: border-color $transition-base;
+  
+  &:focus {
+    outline: none;
+    border-color: $primary;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
+  background-color: $primary;
+  color: $text-light;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all $transition-base;
+  box-shadow: $shadow-md;
+  z-index: $z-index-fixed;
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  &:hover {
+    background-color: color-mix(in srgb, $primary 95%, black);
+    transform: translateY(-3px);
+  }
+} 

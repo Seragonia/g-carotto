@@ -1,0 +1,67 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          
+      - name: Install Node Dependencies
+        run: npm ci
+        
+      - name: Install i18n-auto-translation dependencies
+        run: |
+          npm install i18n-auto-translation --save-dev
+          npm install @vitalets/google-translate-api --save-dev
+          npm install sass -g
+          
+      - name: Compile SCSS to CSS
+        run: sass sass/style.scss:sass/style.css --style=compressed
+          
+      - name: Generate Translations
+        run: |
+          mkdir -p _i18n
+          node scripts/translate.js
+        env:
+          DEFAULT_LANG: 'fr'
+          TARGET_LANGS: 'en,es,de,zh,id,fil'
+        
+      - name: Build with Jekyll
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+        
+      - name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          folder: _site
+          branch: gh-pages
+          clean: true
+          single-commit: true 

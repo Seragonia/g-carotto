@@ -1,0 +1,25 @@
+{% comment %}
+Simple helper for language-specific URLs
+Usage: {% include localized_url.html url='/path' lang='en' %}
+{% endcomment %}
+
+{% assign target_lang = include.lang | default: site.active_lang %}
+{% assign url = include.url | strip %}
+
+{% if target_lang == 'fr' %}
+  {% if url == '' or url == '/' %}
+    {% assign final_url = '/' %}
+  {% else %}
+    {% assign url = url | remove_first: '/' %}
+    {% assign final_url = '/' | append: url %}
+  {% endif %}
+{% else %}
+  {% if url == '' or url == '/' %}
+    {% assign final_url = '/' | append: target_lang | append: '/' %}
+  {% else %}
+    {% assign url = url | remove_first: '/' %}
+    {% assign final_url = '/' | append: target_lang | append: '/' | append: url %}
+  {% endif %}
+{% endif %}
+
+{{ final_url | strip }} 

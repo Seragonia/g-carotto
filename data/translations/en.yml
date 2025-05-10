@@ -1,0 +1,100 @@
+# Navigation
+home: 'Home'
+the_game: 'The Game'
+classes: 'Classes'
+pets: 'Pets'
+quests: 'Quests'
+rebirth: 'Rebirth'
+miscellaneous: 'Miscellaneous'
+faq: 'FAQ'
+
+# Classes
+druid: 'Druid'
+priest: 'Priest'
+archer: 'Archer'
+mage: 'Mage'
+warrior: 'Warrior'
+
+# Game sections
+getting_started: 'Getting Started'
+how_to_play: 'How to Play'
+daily_rewards: 'Daily Rewards'
+shortcuts: 'Shortcuts'
+character: 'Character'
+equipment: 'Equipment'
+marriage: 'Marriage'
+mounts: 'Mounts'
+costumes: 'Costumes'
+emotions: 'Emotions'
+combat: 'Combat'
+instances: 'Instances'
+battlefields: 'Battlefields'
+judgment_chamber: 'Judgment Chamber'
+ancient_tower: 'Ancient Tower'
+zodiac: 'Zodiac'
+items: 'Items'
+gathering: 'Gathering'
+guilds: 'Guilds'
+trading: 'Trading'
+
+# Pet sections
+pet_guide: 'Pet Guide'
+family_game: 'Family Game'
+pet_list: 'Pet List'
+pet_skills: 'Pet Skills'
+innate_skills: 'Innate Skills'
+learned_skills: 'Learned Skills'
+top_pets: 'Top Pets'
+fusion_tables: 'Fusion Tables'
+
+# Quest sections
+daily_quests: 'Daily Quests'
+skill_key_quest: 'Skill Key Quest'
+defense_power_1: 'Defense Power I'
+talent_point_quests: 'Talent Point Quests'
+
+# Rebirth sections
+what_is_it: 'What Is Rebirth?'
+equipment_rebirth: 'Equipment Rebirth'
+pet_rebirth: 'Pet Rebirth'
+character_rebirth: 'Character Rebirth'
+talent_points: 'Talent Points'
+
+# Misc sections
+legends: 'Legends'
+leveling: 'Leveling Guide'
+easy_gold: 'Easy Gold'
+tips: 'Tips & Tricks'
+wallpapers: 'Wallpapers'
+top_players: 'Top Players'
+
+# FAQ sections
+support: 'Support'
+lexicon: 'Lexicon'
+security: 'Security'
+credits: 'Credits'
+
+# Footer
+download: 'Download'
+useful_links: 'Useful Links'
+contact_support: 'Contact Support'
+get_gold: 'Get Gold'
+quick_leveling: 'Quick Leveling'
+resources: 'Resources'
+contribute: 'Contribute'
+legal: 'Legal'
+privacy_policy: 'Privacy Policy'
+terms: 'Terms'
+licenses: 'Licenses'
+footer_description: 'A fansite for Canaan Online players'
+copyright_notice: 'All Rights Reserved'
+license_notice: 'Game content and materials are trademarks and copyrights of their respective companies'
+
+# Homepage sections
+news: 'News'
+interviews: 'Interviews'
+staff: 'Staff'
+join: 'Join Us'
+articles: 'Articles'
+comments: 'Comments'
+navigation: 'Navigation' 

@@ -1,0 +1,194 @@
+home:
+  title:
+    fr: 'Accueil'
+    en: 'Home'
+    es: 'Inicio'
+    de: 'Startseite'
+    zh: '首页'
+    id: 'Beranda'
+    fil: 'Pahina'
+  subSections:
+    news:
+      fr: 'Actualités'
+      en: 'News'
+      es: 'Noticias'
+      de: 'Neuigkeiten'
+      zh: '新闻'
+      id: 'Berita'
+      fil: 'Balita'
+    staff:
+      fr: 'Équipe'
+      en: 'Staff'
+      es: 'Personal'
+      de: 'Team'
+      zh: '团队'
+      id: 'Staf'
+      fil: 'Kawani'
+
+game:
+  title:
+    fr: 'Jeu'
+    en: 'Game'
+    es: 'Juego'
+    de: 'Spiel'
+    zh: '游戏'
+    id: 'Permainan'
+    fil: 'Laro'
+  subSections:
+    gettingStarted:
+      fr: 'Commencer'
+      en: 'Getting Started'
+      es: 'Empezando'
+      de: 'Erste Schritte'
+      zh: '入门指南'
+      id: 'Memulai'
+      fil: 'Pagsisimula'
+    character:
+      fr: 'Personnage'
+      en: 'Character'
+      es: 'Personaje'
+      de: 'Charakter'
+      zh: '角色'
+      id: 'Karakter'
+      fil: 'Karakter'
+    combat:
+      fr: 'Combat'
+      en: 'Combat'
+      es: 'Combate'
+      de: 'Kampf'
+      zh: '战斗'
+      id: 'Pertempuran'
+      fil: 'Labanan'
+    items:
+      fr: 'Objets'
+      en: 'Items'
+      es: 'Objetos'
+      de: 'Gegenstände'
+      zh: '物品'
+      id: 'Barang'
+      fil: 'Mga Gamit'
+    gathering:
+      fr: 'Récolte'
+      en: 'Gathering'
+      es: 'Recolección'
+      de: 'Sammeln'
+      zh: '采集'
+      id: 'Pengumpulan'
+      fil: 'Pangangalap'
+    trading:
+      fr: 'Commerce'
+      en: 'Trading'
+      es: 'Comercio'
+      de: 'Handel'
+      zh: '交易'
+      id: 'Perdagangan'
+      fil: 'Pakikipagkalakalan'
+    guilds:
+      fr: 'Guildes'
+      en: 'Guilds'
+      es: 'Gremios'
+      de: 'Gilden'
+      zh: '公会'
+      id: 'Serikat'
+      fil: 'Mga Gilya'
+
+classes:
+  title:
+    fr: 'Classes'
+    en: 'Classes'
+    es: 'Clases'
+    de: 'Klassen'
+    zh: '职业'
+    id: 'Kelas'
+    fil: 'Mga Klase'
+  subSections:
+    mage:
+      fr: 'Mage'
+      en: 'Mage'
+      es: 'Mago'
+      de: 'Magier'
+      zh: '法师'
+      id: 'Mage'
+      fil: 'Mage'
+    druid:
+      fr: 'Druide'
+      en: 'Druid'
+      es: 'Druida'
+      de: 'Druide'
+      zh: '德鲁伊'
+      id: 'Druid'
+      fil: 'Druid'
+    ranger:
+      fr: 'Ranger'
+      en: 'Ranger'
+      es: 'Ranger'
+      de: 'Ranger'
+      zh: '游侠'
+      id: 'Ranger'
+      fil: 'Ranger'
+    warrior:
+      fr: 'Guerrier'
+      en: 'Warrior'
+      es: 'Guerrero'
+      de: 'Krieger'
+      zh: '战士'
+      id: 'Ksatria'
+      fil: 'Ksatria'
+    priest:
+      fr: 'Prêtre'
+      en: 'Priest'
+      es: 'Sacerdote'
+      de: 'Priester'
+      zh: '牧师'
+      id: 'Pemuja'
+      fil: 'Pemuja'
+    
+pets:
+  title:
+    fr: 'Familiers'
+    en: 'Pets'
+    es: 'Mascotas'
+    de: 'Haustiere'
+    zh: '宠物'
+    id: 'Hewan Peliharaan'
+    fil: 'Mga Alagang Hayop'
+
+quests:
+  title:
+    fr: 'Quêtes'
+    en: 'Quests'
+    es: 'Misiones'
+    de: 'Quests'
+    zh: '任务'
+    id: 'Tugas'
+    fil: 'Mga Pagsubok'
+
+rebirth:
+  title:
+    fr: 'Renaissance'
+    en: 'Rebirth'
+    es: 'Renacimiento'
+    de: 'Wiedergeburt'
+    zh: '重生'
+    id: 'Kelahiran Kembali'
+    fil: 'Muling Pagsilang'
+
+misc:
+  title:
+    fr: 'Divers'
+    en: 'Miscellaneous'
+    es: 'Misceláneos'
+    de: 'Verschiedenes'
+    zh: '杂项'
+    id: 'Lain-lain'
+    fil: 'Iba Pa'
+
+faq:
+  title:
+    fr: 'FAQ'
+    en: 'FAQ'
+    es: 'Preguntas Frecuentes'
+    de: 'FAQ'
+    zh: '常见问题'
+    id: 'Pertanyaan Umum'
+    fil: 'Mga Madalas Itanong' 

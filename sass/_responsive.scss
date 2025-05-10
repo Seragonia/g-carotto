@@ -1,0 +1,162 @@
+@import 'variables';
+
+// Small devices (portrait phones)
+@media (max-width: $breakpoint-sm) {
+  .container {
+    padding: 0 $spacing-sm;
+  }
+
+  h1 {
+    font-size: $font-size-3xl;
+  }
+
+  h2 {
+    font-size: $font-size-2xl;
+  }
+
+  h3 {
+    font-size: $font-size-xl;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  .page-section {
+    padding: $spacing-xl 0;
+  }
+
+  .footer-widgets {
+    gap: $spacing-md;
+  }
+}
+
+// Medium devices (landscape phones, tablets)
+@media (max-width: $breakpoint-md) {
+  .hide-md {
+    display: none;
+  }
+
+  .site-logo span {
+    display: none;
+  }
+
+  .two-column-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+// Large devices (laptops, desktops)
+@media (max-width: $breakpoint-lg) {
+  .hide-lg {
+    display: none;
+  }
+
+  .main-navigation {
+    display: none;
+  }
+
+  .mobile-menu-active {
+    overflow: hidden;
+  }
+}
+
+// Extra large devices (large desktops)
+@media (min-width: $breakpoint-xl) {
+  .container {
+    max-width: $container-max-width;
+  }
+
+  .hide-xl {
+    display: none;
+  }
+}
+
+// Responsive visibility classes
+.show-sm {
+  display: none;
+
+  @media (max-width: $breakpoint-sm) {
+    display: block;
+  }
+}
+
+.show-md {
+  display: none;
+
+  @media (max-width: $breakpoint-md) {
+    display: block;
+  }
+}
+
+.show-lg {
+  display: none;
+
+  @media (max-width: $breakpoint-lg) {
+    display: block;
+  }
+}
+
+// Responsive grid
+@media (max-width: $breakpoint-lg) {
+  .md\:col-span-12 {
+    grid-column: span 12;
+  }
+
+  .md\:col-span-6 {
+    grid-column: span 6;
+  }
+
+  .md\:col-span-4 {
+    grid-column: span 4;
+  }
+
+  .md\:col-span-3 {
+    grid-column: span 3;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .sm\:col-span-12 {
+    grid-column: span 12;
+  }
+
+  .sm\:col-span-6 {
+    grid-column: span 6;
+  }
+}
+
+// Responsive text
+@media (max-width: $breakpoint-md) {
+  .sm\:text-center {
+    text-align: center;
+  }
+
+  .sm\:text-left {
+    text-align: left;
+  }
+
+  .sm\:text-sm {
+    font-size: $font-size-sm;
+  }
+}
+
+// Responsive flex utilities
+@media (max-width: $breakpoint-md) {
+  .sm\:flex-col {
+    flex-direction: column;
+  }
+
+  .sm\:items-center {
+    align-items: center;
+  }
+
+  .sm\:justify-center {
+    justify-content: center;
+  }
+}

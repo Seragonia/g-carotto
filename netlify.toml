@@ -1,0 +1,47 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "16"
+
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/es/:splat"
+  status = 302
+  conditions = {Language = ["es"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/fr/:splat"
+  status = 302
+  conditions = {Language = ["fr"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/zh/:splat"
+  status = 302
+  conditions = {Language = ["zh"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/id/:splat"
+  status = 302
+  conditions = {Language = ["id"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/fil/:splat"
+  status = 302
+  conditions = {Language = ["fil"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/en/:splat"
+  status = 302 

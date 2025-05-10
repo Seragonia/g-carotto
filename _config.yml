@@ -1,0 +1,93 @@
+title: G.Carotto - Canaan Online Fansite
+description: Fansite et aide pour Canaan Online
+baseurl: ''
+url: 'http://127.0.0.1:4000'
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - scripts
+  - README.md
+  - CONTRIBUTING.md
+  - package.json
+  - package-lock.json
+  - _site
+  - scripts/translate.js
+
+# Custom directory paths - using non-underscore directories
+layouts_dir: layouts
+includes_dir: includes
+data_dir: data
+sass:
+  sass_dir: sass
+  style: compressed
+  load_paths:
+    - sass
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+  wiki:
+    output: true
+    permalink: /wiki/:path/
+
+# Default values
+defaults:
+  - scope:
+      path: ''
+    values:
+      layout: 'default'
+  - scope:
+      path: 'content'
+    values:
+      layout: 'page'
+  - scope:
+      path: 'sass/main.scss'
+    values:
+      sitemap: false
+
+# Content directory mapping
+content_dir: content
+menu_structure_file: 'data/pages.yml'
+
+# Multilingual settings with polyglot
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-polyglot
+
+languages: ['fr', 'en', 'es', 'de', 'zh', 'id', 'fil']
+default_lang: 'fr'
+exclude_from_localization: ['assets', 'css', 'js', 'fonts', 'images', 'sass']
+parallel_localization: false
+
+# Translation settings
+i18n:
+  default_locale: 'fr'
+  translations_dir: '_i18n'
+
+# Theme settings
+theme_color: '#3f51b5'
+secondary_color: '#2196f3'
+accent_color: '#ff5722'
+text_color: '#1e293b'
+text_light: '#64748b'
+background_color: '#f8fafc'
+card_background: '#ffffff'
+border_color: '#e2e8f0'
+header_bg: '#2e3b4e'
+footer_bg: '#1e2a3a'
+
+# Language settings
+# This will make Jekyll set the page.lang value based on URL parameters
+language:
+  default: en
+  param_name: lang

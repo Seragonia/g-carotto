@@ -1,0 +1,127 @@
+---
+layout: default
+---
+
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>{{ page.title | default: site.title }}</h1>
+    <p class="hero-description">{{ page.description | default: site.description }}</p>
+    <div class="hero-buttons">
+      <a href="{% include localized_url.html url='/game/getting-started/' %}" class="btn btn-primary">
+        {{ site.data.translations[site.active_lang].get_started | default: "Get Started" }}
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="features-section">
+  <div class="section-header text-center">
+    <h2>Tout ce qu'il faut savoir sur Canaan Online</h2>
+    <p>Des guides complets et des ressources pour tous les aspects du jeu</p>
+  </div>
+  
+  <div class="card-grid">
+    <a href="{% include localized_url.html url='/game/getting-started/' %}" class="feature-card">
+      <div class="feature-card-image bg-primary"></div>
+      <div class="feature-card-content">
+        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].beginners_guide | default: "Beginner's Guide" }}</h3>
+        <p class="feature-card-description">{{ site.data.translations[site.active_lang].beginners_guide_desc | default: "Everything you need to know to start your adventure" }}</p>
+      </div>
+    </a>
+    <a href="{% include localized_url.html url='/classes/' %}" class="feature-card">
+      <div class="feature-card-image bg-secondary"></div>
+      <div class="feature-card-content">
+        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].classes | default: "Classes" }}</h3>
+        <p class="feature-card-description">{{ site.data.translations[site.active_lang].classes_desc | default: "Discover the different classes and their abilities" }}</p>
+      </div>
+    </a>
+    <a href="{% include localized_url.html url='/pets/' %}" class="feature-card">
+      <div class="feature-card-image bg-accent"></div>
+      <div class="feature-card-content">
+        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].pets | default: "Pets" }}</h3>
+        <p class="feature-card-description">{{ site.data.translations[site.active_lang].pets_desc | default: "All about pets, their skills and fusion" }}</p>
+      </div>
+    </a>
+    <a href="{% include localized_url.html url='/quests/' %}" class="feature-card">
+      <div class="feature-card-image" style="background-color: #5d6b98;"></div>
+      <div class="feature-card-content">
+        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].quests | default: "Quests" }}</h3>
+        <p class="feature-card-description">{{ site.data.translations[site.active_lang].quests_desc | default: "Detailed guides for all game quests" }}</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section class="quick-links-section">
+  <div class="section-header text-center">
+    <h2>Accès rapide</h2>
+    <p>Les ressources les plus consultées</p>
+  </div>
+  
+  <div class="quick-links-grid grid cols-2 gap-lg">
+    <div class="quick-links-card card p-lg">
+      <h3>Guides populaires</h3>
+      <ul class="quick-links-list">
+        <li><a href="{{ '/jeu/debuter/comment-jouer/' | relative_url }}"><i class="fas fa-angle-right"></i> Comment jouer ?</a></li>
+        <li><a href="{{ '/familiers/fusions/' | relative_url }}"><i class="fas fa-angle-right"></i> Tableaux de fusions des familiers</a></li>
+        <li><a href="{{ '/divers/po/' | relative_url }}"><i class="fas fa-angle-right"></i> Comment gagner des po's ?</a></li>
+        <li><a href="{{ '/divers/xp/' | relative_url }}"><i class="fas fa-angle-right"></i> XP rapidement</a></li>
+        <li><a href="{{ '/jeu/personnage/montures/' | relative_url }}"><i class="fas fa-angle-right"></i> Guide des montures</a></li>
+      </ul>
+    </div>
+    <div class="quick-links-card card p-lg">
+      <h3>Outils utiles</h3>
+      <ul class="quick-links-list">
+        <li><a href="{{ '/outils/calculateur-fusion/' | relative_url }}"><i class="fas fa-angle-right"></i> Calculateur de fusion</a></li>
+        <li><a href="{{ '/outils/simulateur-familier/' | relative_url }}"><i class="fas fa-angle-right"></i> Simulateur de familier</a></li>
+        <li><a href="{{ '/outils/carte-interactive/' | relative_url }}"><i class="fas fa-angle-right"></i> Carte interactive</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section text-center">
+  <h2>Besoin d'aide sur Canaan Online ?</h2>
+  <p>Rejoignez notre communauté et posez vos questions !</p>
+  <div class="cta-buttons mt-lg">
+    <a href="https://discord.gg/canaan" class="btn btn-primary"><i class="fab fa-discord"></i> Rejoindre le Discord</a>
+    <a href="{{ '/contact/' | relative_url }}" class="btn btn-outline">Nous contacter</a>
+  </div>
+</section>
+
+<section class="latest-updates">
+  <div class="section-header text-center">
+    <h2>Dernières mises à jour</h2>
+    <p>Les nouveautés du site et du jeu</p>
+  </div>
+  
+  <div class="grid cols-2 gap-lg">
+    <div class="updates-card card p-lg">
+      <h3>Nouveautés du site</h3>
+      <ul class="updates-list">
+        {% for post in site.posts limit:5 %}
+          <li>
+            <span class="update-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ '/actualites/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Voir toutes les actualités</a>
+    </div>
+    
+    <div class="updates-card card p-lg">
+      <h3>Mises à jour du jeu</h3>
+      <ul class="updates-list">
+        {% for update in site.data.game_updates limit:5 %}
+          <li>
+            <span class="update-date">{{ update.date }}</span>
+            <span>{{ update.title }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+      <a href="{{ '/jeu/mises-a-jour/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Historique des mises à jour</a>
+    </div>
+  </div>
+</section>
+
+{{ content }} 
