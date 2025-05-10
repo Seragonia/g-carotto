@@ -44,6 +44,9 @@ jobs:
         id: pages
         uses: actions/configure-pages@v4
 
+      - name: Add missing platform to bundle
+        run: bundle lock --add-platform x86_64-linux
+
       - name: Generate Translations
         run: |
           # Create translations directory if it doesn't exist
