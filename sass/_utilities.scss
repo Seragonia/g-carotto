@@ -143,37 +143,70 @@
 // Scroll to top button
 .scroll-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: $spacing-xl;
+  right: $spacing-xl;
   width: 40px;
   height: 40px;
-  background-color: $accent;
+  background: $accent;
   color: white;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all $transition-base;
   opacity: 0;
   visibility: hidden;
+  transition: opacity $transition-base, visibility $transition-base;
   border: none;
-  z-index: $z-index-fixed;
   box-shadow: $shadow-md;
-  
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: $shadow-lg;
-  }
-  
-  &.visible {
-    opacity: 1;
-    visibility: visible;
-  }
+  z-index: $z-index-fixed;
 }
 
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  background: darken($accent, 5%);
+}
 /* Hide empty active list items */
 li.active:empty,
 li.active > a:empty {
   display: none;
-} 
+}
+
+/* Ensure scrollbars are always visible */
+*:hover::-webkit-scrollbar {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+*::-webkit-scrollbar {
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+// Text colors
+.text-primary { color: $text-primary; }
+.text-secondary { color: $text-secondary; }
+.text-light { color: $text-light; }
+.text-muted { color: $text-muted; }
+.text-accent { color: $accent; }
+.text-white { color: #fff; }
+.text-dark { color: $dark; } 

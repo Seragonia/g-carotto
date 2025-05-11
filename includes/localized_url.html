@@ -6,20 +6,35 @@ Usage: {% include localized_url.html url='/path' lang='en' %}
 {% assign target_lang = include.lang | default: site.active_lang %}
 {% assign url = include.url | strip %}
 
+{% if url == 'home' and site.data.pages.home.root == true %}
+  {% assign url = '/' %}
+{% endif %}
+
+{% comment %} Ensure proper URL formatting with slashes {% endcomment %}
+{% assign url_segments = url | split: '/' %}
+{% assign cleaned_segments = '' | split: '' %}
+{% for segment in url_segments %}
+  {% if segment != '' %}
+    {% assign cleaned_segments = cleaned_segments | push: segment %}
+  {% endif %}
+{% endfor %}
+{% assign clean_url = cleaned_segments | join: '/' %}
+
 {% if target_lang == 'fr' %}
-  {% if url == '' or url == '/' %}
-    {% assign final_url = '/' %}
+  {% if clean_url == '' %}
+    {% assign final_url = site.baseurl | append: '/' %}
   {% else %}
-    {% assign url = url | remove_first: '/' %}
-    {% assign final_url = '/' | append: url %}
+    {% assign final_url = site.baseurl | append: '/' | append: clean_url | append: '/' %}
   {% endif %}
 {% else %}
-  {% if url == '' or url == '/' %}
-    {% assign final_url = '/' | append: target_lang | append: '/' %}
+  {% if clean_url == '' %}
+    {% assign final_url = site.baseurl | append: '/' | append: target_lang | append: '/' %}
   {% else %}
-    {% assign url = url | remove_first: '/' %}
-    {% assign final_url = '/' | append: target_lang | append: '/' | append: url %}
+    {% assign final_url = site.baseurl | append: '/' | append: target_lang | append: '/' | append: clean_url | append: '/' %}
   {% endif %}
 {% endif %}
 
-{{ final_url | strip }} 
+{% comment %} Ensure no duplicate slashes {% endcomment %}
+{% assign final_url = final_url | replace: '//', '/' | replace: '//', '/' %}
+
+{{ final_url }} 

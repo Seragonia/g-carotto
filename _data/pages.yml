@@ -1,0 +1,43 @@
+---
+# Pages with hot flag
+- title: "Getting Started Guide"
+  url: "/content/game/getting-started"
+  description: "Everything you need to know to start your adventure"
+  hot: true
+  icon: "rocket"
+  color: "#ff7f00"
+
+- title: "Pets Fusion Guide"
+  url: "/content/pets/fusion"
+  description: "Complete guide to pet fusion and combination tables"
+  hot: true
+  icon: "paw"
+  color: "#2563eb"
+
+- title: "XP Farming Guide"
+  url: "/content/misc/xp"
+  description: "How to gain experience points quickly"
+  hot: true
+  icon: "bolt"
+  color: "#10b981"
+
+- title: "Mounts Guide" 
+  url: "/content/game/mounts"
+  description: "Everything about mounts and how to obtain them"
+  hot: true
+  icon: "horse"
+  color: "#8b5cf6"
+
+- title: "Currency Guide"
+  url: "/content/misc/currency"
+  description: "How to earn and manage in-game currency"
+  hot: true
+  icon: "coins"
+  color: "#f59e0b"
+
+- title: "Rebirth System"
+  url: "/content/rebirth/guide"
+  description: "Complete guide to the rebirth system and benefits"
+  hot: true
+  icon: "sync"
+  color: "#ef4444" 

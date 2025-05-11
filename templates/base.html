@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }} - GCarotto Fansite</title>
-  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="{{ '/static/css/style.css' | relative_url }}">
   <meta name="license" content="Content: CC BY-NC-SA, Code: MIT/GPLv3">
   <style>
     .language-selector {
@@ -47,11 +47,11 @@
 <body>
   <header>
     <div class="container">
-      <h1><a href="/{{ lang }}/index.html">GCarotto Fansite</a></h1>
+      <h1><a href="{{ site.baseurl }}/{{ lang }}/index.html">GCarotto Fansite</a></h1>
       <nav>
         <ul>
-          <li><a href="/{{ lang }}/index.html">{{ i18n.home }}</a></li>
-          <li><a href="/{{ lang }}/about.html">{{ i18n.about }}</a></li>
+          <li><a href="{{ site.baseurl }}/{{ lang }}/index.html">{{ i18n.home }}</a></li>
+          <li><a href="{{ site.baseurl }}/{{ lang }}/about.html">{{ i18n.about }}</a></li>
           <li class="language-selector">
             <a href="#" data-lang="en" class="{{ 'active' if lang == 'en' else '' }}" title="English">
               <span class="emoji-flag">🇬🇧</span>
@@ -98,12 +98,15 @@
   document.addEventListener('DOMContentLoaded', function() {
     const currentPath = window.location.pathname;
     const pathParts = currentPath.split('/');
-    const currentLang = pathParts[1];
-    const remainingPath = pathParts.slice(2).join('/');
+    const baseurl = '{{ site.baseurl }}';
+    const baseurlParts = baseurl ? baseurl.split('/').filter(Boolean) : [];
+    const startIndex = baseurlParts.length + 1;
+    const currentLang = pathParts[startIndex];
+    const remainingPath = pathParts.slice(startIndex + 1).join('/');
     
     document.querySelectorAll('.language-selector a').forEach(link => {
       const lang = link.getAttribute('data-lang');
-      link.href = '/' + lang + '/' + remainingPath;
+      link.href = baseurl + '/' + lang + '/' + remainingPath;
       
       if (lang === currentLang) {
         link.classList.add('active');

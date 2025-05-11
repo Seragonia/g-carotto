@@ -14,6 +14,11 @@ Jekyll::Hooks.register :site, :post_write do |site|
     'content/home' => 'home'
   }
   
+  # If home page is also root page (based on home.root setting)
+  if site.data['pages'] && site.data['pages']['home'] && site.data['pages']['home']['root']
+    mappings['content/home'] = ''
+  end
+  
   site_dir = site.config['destination']
   languages = site.config['languages'] || ['en']
   default_lang = site.config['default_lang'] || languages.first
@@ -76,35 +81,5 @@ Jekyll::Hooks.register :site, :pre_render do |site|
     
     # Skip non-HTML files
     next unless item.output_ext == '.html'
-  end
-end
-
-# Fix generated HTML files with malformed links
-Jekyll::Hooks.register :site, :post_write do |site|
-  site_dir = site.config['destination']
-  
-  # Process all HTML files
-  Dir.glob(File.join(site_dir, '**/*.html')).each do |file|
-    content = File.read(file)
-    modified = false
-    
-    # Fix missing slashes in class links
-    if content.include?('classesmage') || 
-       content.include?('classesranger') || 
-       content.include?('classesdruid') || 
-       content.include?('classeswarrior') || 
-       content.include?('classespriest')
-      
-      content.gsub!(/\/classes([a-z]+)(\s|\")/, '/classes/\1\2')
-      content.gsub!(/href="\s+([^"]+)\s+"/, 'href="\1"')
-      modified = true
-    end
-    
-    # Only write if we made changes
-    if modified
-      File.open(file, 'w') do |f|
-        f.write(content)
-      end
-    end
   end
 end

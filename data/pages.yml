@@ -1,194 +1,417 @@
-home:
+'/':
   title:
-    fr: 'Accueil'
-    en: 'Home'
-    es: 'Inicio'
-    de: 'Startseite'
-    zh: '首页'
-    id: 'Beranda'
-    fil: 'Pahina'
+    fr: Accueil
+    en: Home
+    es: Inicio
+    de: Startseite
+    zh: 首页
+    id: Beranda
+    fil: Pahina
+  description:
+    fr: Bienvenue sur notre page d''accueil
+    en: Welcome to our home page
+    es: Bienvenido a nuestra página de inicio
+    de: Willkommen auf unserer Startseite
+    zh: 欢迎来到我们的主页
+    id: Selamat datang di halaman beranda kami
+    fil: Maligayang pagdating sa aming pahina
   subSections:
     news:
-      fr: 'Actualités'
-      en: 'News'
-      es: 'Noticias'
-      de: 'Neuigkeiten'
-      zh: '新闻'
-      id: 'Berita'
-      fil: 'Balita'
+      fr: Actualités
+      en: News
+      es: Noticias
+      de: Neuigkeiten
+      zh: 新闻
+      id: Berita
+      fil: Balita
+      description:
+        fr: Dernières mises à jour et actualités
+        en: Latest updates and news
+        es: Últimas actualizaciones y noticias
+        de: Neueste Updates und Nachrichten
+        zh: 最新更新和新闻
+        id: Pembaruan dan berita terbaru
+        fil: Pinakabagong updates at balita
+      icon: /assets/img/item/11.png
+      subSections:
+        latest:
+          fr: Dernières nouvelles
+          en: Latest news
+          es: Últimas noticias
+          de: Neueste Nachrichten
+          zh: 最新消息
+          id: Berita terbaru
+          fil: Pinakabagong balita
     staff:
-      fr: 'Équipe'
-      en: 'Staff'
-      es: 'Personal'
-      de: 'Team'
-      zh: '团队'
-      id: 'Staf'
-      fil: 'Kawani'
+      fr: Équipe
+      en: Staff
+      es: Personal
+      de: Team
+      zh: 团队
+      id: Staf
+      fil: Kawani
+      description:
+        fr: Notre équipe et les membres du personnel
+        en: Our team and staff members
+        es: Nuestro equipo y miembros del personal
+        de: Unser Team und Mitarbeiter
+        zh: 我们的团队和工作人员
+        id: Tim dan anggota staf kami
+        fil: Ang aming koponan at mga kawani
+      icon: /assets/img/item/147.png
 
 game:
   title:
-    fr: 'Jeu'
-    en: 'Game'
-    es: 'Juego'
-    de: 'Spiel'
-    zh: '游戏'
-    id: 'Permainan'
-    fil: 'Laro'
+    fr: Jeu
+    en: Game
+    es: Juego
+    de: Spiel
+    zh: 游戏
+    id: Permainan
+    fil: Laro
+  description:
+    fr: Tout sur le jeu et comment jouer
+    en: All about the game and how to play
+    es: Todo sobre el juego y cómo jugar
+    de: Alles über das Spiel und wie man spielt
+    zh: 关于游戏和如何玩的所有信息
+    id: Semua tentang permainan dan cara bermain
+    fil: Lahat tungkol sa laro at paano maglaro
   subSections:
     gettingStarted:
-      fr: 'Commencer'
-      en: 'Getting Started'
-      es: 'Empezando'
-      de: 'Erste Schritte'
-      zh: '入门指南'
-      id: 'Memulai'
-      fil: 'Pagsisimula'
+      fr: Commencer
+      en: Getting Started
+      es: Empezando
+      de: Erste Schritte
+      zh: 入门指南
+      id: Memulai
+      fil: Pagsisimula
+      description:
+        fr: Comment commencer votre aventure
+        en: How to start your adventure
+        es: Cómo comenzar tu aventura
+        de: Wie Sie Ihr Abenteuer beginnen
+        zh: 如何开始您的冒险
+        id: Cara memulai petualangan Anda
+        fil: Paano simulan ang iyong pakikipagsapalaran
+      icon: /assets/img/item/16.png
     character:
-      fr: 'Personnage'
-      en: 'Character'
-      es: 'Personaje'
-      de: 'Charakter'
-      zh: '角色'
-      id: 'Karakter'
-      fil: 'Karakter'
+      fr: Personnage
+      en: Character
+      es: Personaje
+      de: Charakter
+      zh: 角色
+      id: Karakter
+      fil: Karakter
+      description:
+        fr: Tout sur la création et le développement de personnages
+        en: All about character creation and development
+        es: Todo sobre la creación y desarrollo de personajes
+        de: Alles über Charaktererstellung und -entwicklung
+        zh: 关于角色创建和发展的所有信息
+        id: Semua tentang pembuatan dan pengembangan karakter
+        fil: Lahat tungkol sa paglikha at pag-unlad ng karakter
+      icon: /assets/img/item/24.png
     combat:
-      fr: 'Combat'
-      en: 'Combat'
-      es: 'Combate'
-      de: 'Kampf'
-      zh: '战斗'
-      id: 'Pertempuran'
-      fil: 'Labanan'
+      fr: Combat
+      en: Combat
+      es: Combate
+      de: Kampf
+      zh: 战斗
+      id: Pertempuran
+      fil: Labanan
+      description:
+        fr: Mécaniques de combat et stratégies
+        en: Combat mechanics and strategies
+        es: Mecánicas y estrategias de combate
+        de: Kampfmechaniken und Strategien
+        zh: 战斗机制和策略
+        id: Mekanika pertempuran dan strategi
+        fil: Mekanismo ng labanan at mga estratehiya
+      icon: /assets/img/item/153.png
+      subSections:
+        melee:
+          fr: Combat au corps à corps
+          en: Melee combat
+          es: Combate cuerpo a cuerpo
+          de: Nahkampf
+          zh: 近战
+          id: Pertempuran jarak dekat
+          fil: Labanan sa malapit
+        ranged:
+          fr: Combat à distance
+          en: Ranged combat
+          es: Combate a distancia
+          de: Fernkampf
+          zh: 远程战斗
+          id: Pertempuran jarak jauh
+          fil: Labanan sa malayo
     items:
-      fr: 'Objets'
-      en: 'Items'
-      es: 'Objetos'
-      de: 'Gegenstände'
-      zh: '物品'
-      id: 'Barang'
-      fil: 'Mga Gamit'
+      fr: Objets
+      en: Items
+      es: Objetos
+      de: Gegenstände
+      zh: 物品
+      id: Barang
+      fil: Mga Gamit
+      description:
+        fr: Guide des objets et équipements
+        en: Guide to items and equipment
+        es: Guía de objetos y equipamiento
+        de: Leitfaden zu Gegenständen und Ausrüstung
+        zh: 物品和装备指南
+        id: Panduan barang dan peralatan
+        fil: Gabay sa mga gamit at kagamitan
+      icon: /assets/img/item/1.png
     gathering:
-      fr: 'Récolte'
-      en: 'Gathering'
-      es: 'Recolección'
-      de: 'Sammeln'
-      zh: '采集'
-      id: 'Pengumpulan'
-      fil: 'Pangangalap'
+      fr: Récolte
+      en: Gathering
+      es: Recolección
+      de: Sammeln
+      zh: 采集
+      id: Pengumpulan
+      fil: Pangangalap
+      description:
+        fr: Comment récolter des ressources
+        en: How to gather resources
+        es: Cómo recolectar recursos
+        de: Wie man Ressourcen sammelt
+        zh: 如何收集资源
+        id: Cara mengumpulkan sumber daya
+        fil: Paano mangalap ng mga mapagkukunan
+      icon: /assets/img/item/176.png
     trading:
-      fr: 'Commerce'
-      en: 'Trading'
-      es: 'Comercio'
-      de: 'Handel'
-      zh: '交易'
-      id: 'Perdagangan'
-      fil: 'Pakikipagkalakalan'
+      fr: Commerce
+      en: Trading
+      es: Comercio
+      de: Handel
+      zh: 交易
+      id: Perdagangan
+      fil: Pakikipagkalakalan
+      description:
+        fr: Guide de commerce et d''échange
+        en: Guide to trading and exchange
+        es: Guía de comercio e intercambio
+        de: Leitfaden für Handel und Austausch
+        zh: 交易和交换指南
+        id: Panduan perdagangan dan pertukaran
+        fil: Gabay sa pakikipagkalakalan at palitan
+      icon: /assets/img/item/218.png
     guilds:
-      fr: 'Guildes'
-      en: 'Guilds'
-      es: 'Gremios'
-      de: 'Gilden'
-      zh: '公会'
-      id: 'Serikat'
-      fil: 'Mga Gilya'
+      fr: Guildes
+      en: Guilds
+      es: Gremios
+      de: Gilden
+      zh: 公会
+      id: Serikat
+      fil: Mga Gilya
+      description:
+        fr: Comment rejoindre et gérer des guildes
+        en: How to join and manage guilds
+        es: Cómo unirse y administrar gremios
+        de: Wie man Gilden beitritt und verwaltet
+        zh: 如何加入和管理公会
+        id: Cara bergabung dan mengelola serikat
+        fil: Paano sumali at pamahalaan ang mga gilya
+      icon: /assets/img/item/5.png
 
 classes:
   title:
-    fr: 'Classes'
-    en: 'Classes'
-    es: 'Clases'
-    de: 'Klassen'
-    zh: '职业'
-    id: 'Kelas'
-    fil: 'Mga Klase'
+    fr: Classes
+    en: Classes
+    es: Clases
+    de: Klassen
+    zh: 职业
+    id: Kelas
+    fil: Mga Klase
+  description:
+    fr: Les différentes classes de personnages
+    en: The different character classes
+    es: Las diferentes clases de personajes
+    de: Die verschiedenen Charakterklassen
+    zh: 不同的角色职业
+    id: Kelas karakter yang berbeda
+    fil: Ang iba't ibang klase ng karakter
+  icon: /assets/img/icons/classes-icon.png
+  hot: true
   subSections:
     mage:
-      fr: 'Mage'
-      en: 'Mage'
-      es: 'Mago'
-      de: 'Magier'
-      zh: '法师'
-      id: 'Mage'
-      fil: 'Mage'
-    druid:
-      fr: 'Druide'
-      en: 'Druid'
-      es: 'Druida'
-      de: 'Druide'
-      zh: '德鲁伊'
-      id: 'Druid'
-      fil: 'Druid'
+      fr: Mage
+      en: Mage
+      es: Mago
+      de: Magier
+      zh: 法师
+      id: Mage
+      fil: Mage
+      description:
+        fr: Maîtres de la magie et des sorts
+        en: Masters of magic and spells
+        es: Maestros de la magia y los hechizos
+        de: Meister der Magie und Zaubersprüche
+        zh: 魔法和法术的大师
+        id: Penguasa sihir dan mantra
+        fil: Mga master ng mahika at mga sumpa
+      icon: /assets/img/menu/mage.png
+      subSections:
+        fire:
+          fr: Feu
+          en: Fire
+          es: Fuego
+          de: Feuer
+          zh: 火
+          id: Api
+          fil: Apoy
+        ice:
+          fr: Glace
+          en: Ice
+          es: Hielo
+          de: Eis
+          zh: 冰
+          id: Es
+          fil: Yelo
     ranger:
-      fr: 'Ranger'
-      en: 'Ranger'
-      es: 'Ranger'
-      de: 'Ranger'
-      zh: '游侠'
-      id: 'Ranger'
-      fil: 'Ranger'
+      fr: Ranger
+      en: Ranger
+      es: Ranger
+      de: Ranger
+      zh: 游侠
+      id: Ranger
+      fil: Ranger
+      description:
+        fr: Experts en combat à distance et pistage
+        en: Experts in ranged combat and tracking
+        es: Expertos en combate a distancia y rastreo
+        de: Experten im Fernkampf und Tracking
+        zh: 远程战斗和追踪专家
+        id: Ahli dalam pertempuran jarak jauh dan pelacakan
+        fil: Mga eksperto sa labanan sa malayo at pagsubaybay
+      icon: ranger.png
     warrior:
-      fr: 'Guerrier'
-      en: 'Warrior'
-      es: 'Guerrero'
-      de: 'Krieger'
-      zh: '战士'
-      id: 'Ksatria'
-      fil: 'Ksatria'
+      fr: Guerrier
+      en: Warrior
+      es: Guerrero
+      de: Krieger
+      zh: 战士
+      id: Ksatria
+      fil: Ksatria
+      description:
+        fr: Combattants puissants et résistants
+        en: Powerful and resilient fighters
+        es: Luchadores poderosos y resistentes
+        de: Mächtige und widerstandsfähige Kämpfer
+        zh: 强大且坚韧的战士
+        id: Pejuang yang kuat dan tangguh
+        fil: Malakas at matatag na mga mandirigma
+      icon: warrior.png
     priest:
-      fr: 'Prêtre'
-      en: 'Priest'
-      es: 'Sacerdote'
-      de: 'Priester'
-      zh: '牧师'
-      id: 'Pemuja'
-      fil: 'Pemuja'
-    
+      fr: Prêtre
+      en: Priest
+      es: Sacerdote
+      de: Priester
+      zh: 牧师
+      id: Pemuja
+      fil: Pemuja
+      description:
+        fr: Guérisseurs divins et soutiens
+        en: Divine healers and support
+        es: Sanadores divinos y apoyo
+        de: Göttliche Heiler und Unterstützung
+        zh: 神圣治疗者和支持者
+        id: Penyembuh ilahi dan pendukung
+        fil: Mga banal na manggagamot at suporta
+      icon: priest.png
+
 pets:
   title:
-    fr: 'Familiers'
-    en: 'Pets'
-    es: 'Mascotas'
-    de: 'Haustiere'
-    zh: '宠物'
-    id: 'Hewan Peliharaan'
-    fil: 'Mga Alagang Hayop'
+    fr: Familiers
+    en: Pets
+    es: Mascotas
+    de: Haustiere
+    zh: 宠物
+    id: Hewan Peliharaan
+    fil: Mga Alagang Hayop
+  description:
+    fr: Compagnons et familiers pour votre aventure
+    en: Companions and pets for your adventure
+    es: Compañeros y mascotas para tu aventura
+    de: Begleiter und Haustiere für dein Abenteuer
+    zh: 你冒险的伙伴和宠物
+    id: Pendamping dan hewan peliharaan untuk petualangan Anda
+    fil: Mga kasama at alagang hayop para sa iyong pakikipagsapalaran
+  icon: pets-icon.png
 
 quests:
   title:
-    fr: 'Quêtes'
-    en: 'Quests'
-    es: 'Misiones'
-    de: 'Quests'
-    zh: '任务'
-    id: 'Tugas'
-    fil: 'Mga Pagsubok'
+    fr: Quêtes
+    en: Quests
+    es: Misiones
+    de: Quests
+    zh: 任务
+    id: Tugas
+    fil: Mga Pagsubok
+  description:
+    fr: Guide des quêtes et missions
+    en: Guide to quests and missions
+    es: Guía de misiones y tareas
+    de: Leitfaden für Quests und Missionen
+    zh: 任务和使命指南
+    id: Panduan untuk tugas dan misi
+    fil: Gabay sa mga pagsubok at misyon
+  icon: quests-icon.png
 
 rebirth:
   title:
-    fr: 'Renaissance'
-    en: 'Rebirth'
-    es: 'Renacimiento'
-    de: 'Wiedergeburt'
-    zh: '重生'
-    id: 'Kelahiran Kembali'
-    fil: 'Muling Pagsilang'
+    fr: Renaissance
+    en: Rebirth
+    es: Renacimiento
+    de: Wiedergeburt
+    zh: 重生
+    id: Kelahiran Kembali
+    fil: Muling Pagsilang
+  description:
+    fr: Le système de renaissance et de progression
+    en: The rebirth and progression system
+    es: El sistema de renacimiento y progresión
+    de: Das Wiedergeburts- und Fortschrittssystem
+    zh: 重生和进展系统
+    id: Sistem kelahiran kembali dan kemajuan
+    fil: Ang sistema ng muling pagsilang at pag-unlad
+  icon: rebirth-icon.png
 
 misc:
   title:
-    fr: 'Divers'
-    en: 'Miscellaneous'
-    es: 'Misceláneos'
-    de: 'Verschiedenes'
-    zh: '杂项'
-    id: 'Lain-lain'
-    fil: 'Iba Pa'
+    fr: Divers
+    en: Miscellaneous
+    es: Misceláneos
+    de: Verschiedenes
+    zh: 杂项
+    id: Lain-lain
+    fil: Iba Pa
+  description:
+    fr: Informations diverses et astuces
+    en: Miscellaneous information and tips
+    es: Información miscelánea y consejos
+    de: Verschiedene Informationen und Tipps
+    zh: 杂项信息和提示
+    id: Informasi lain-lain dan tips
+    fil: Iba''t ibang impormasyon at mga tip
+  icon: misc-icon.png
 
 faq:
   title:
-    fr: 'FAQ'
-    en: 'FAQ'
-    es: 'Preguntas Frecuentes'
-    de: 'FAQ'
-    zh: '常见问题'
-    id: 'Pertanyaan Umum'
-    fil: 'Mga Madalas Itanong' 
+    fr: FAQ
+    en: FAQ
+    es: Preguntas Frecuentes
+    de: FAQ
+    zh: 常见问题
+    id: Pertanyaan Umum
+    fil: Mga Madalas Itanong
+  description:
+    fr: Questions fréquemment posées
+    en: Frequently asked questions
+    es: Preguntas frecuentes
+    de: Häufig gestellte Fragen
+    zh: 常见问题
+    id: Pertanyaan yang sering diajukan
+    fil: Mga madalas itanong na katanungan
+  icon: faq-icon.png 

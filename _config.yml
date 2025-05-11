@@ -1,7 +1,8 @@
 title: G.Carotto - Canaan Online Fansite
 description: Fansite et aide pour Canaan Online
-baseurl: ''
-url: 'http://127.0.0.1:4000'
+baseurl: '/g-carotto'
+url: 'https://seragonia.github.io'
+absolute_url: true
 
 # Build settings
 markdown: kramdown
@@ -66,7 +67,7 @@ plugins:
 
 languages: ['fr', 'en', 'es', 'de', 'zh', 'id', 'fil']
 default_lang: 'fr'
-exclude_from_localization: ['assets', 'css', 'js', 'fonts', 'images', 'sass']
+exclude_from_localization: ['assets', 'css', 'js', 'fonts', 'img', 'sass']
 parallel_localization: false
 
 # Translation settings

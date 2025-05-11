@@ -7,6 +7,18 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,11 +28,27 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Explicitly enable GitHub Pages in repository
+      - name: Enable GitHub Pages
+        uses: actions/configure-pages@v4
+        with:
+          enablement: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          source: main
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
-          bundler-cache: true
+          bundler-cache: false
+
+      - name: Add missing platform to bundle
+        run: bundle lock --add-platform x86_64-linux
+
+      - name: Install bundler dependencies
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -31,32 +59,24 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
         
-      - name: Install i18n-auto-translation dependencies
-        run: |
-          npm install i18n-auto-translation --save-dev
-          npm install @vitalets/google-translate-api --save-dev
-          npm install sass -g
+      - name: Install sass
+        run: npm install sass -g
 
-      - name: Compile SCSS to CSS
-        run: sass sass/style.scss:sass/style.css --style=compressed
+      - name: Prepare SCSS file for compilation
+        run: |
+          # Create a temporary SCSS file without front matter
+          mkdir -p _tmp
+          sed '1,3d' sass/style.scss > _tmp/style.scss
           
-      - name: Setup Pages
+      - name: Compile SCSS to CSS
+        run: sass _tmp/style.scss:sass/style.css --style=compressed --load-path=sass
+          
+      - name: Setup Pages build
         id: pages
         uses: actions/configure-pages@v4
 
-      - name: Add missing platform to bundle
-        run: bundle lock --add-platform x86_64-linux
-
-      - name: Generate Translations
-        run: |
-          # Create translations directory if it doesn't exist
-          mkdir -p _i18n
-          
-          # Run the translation script
-          node scripts/translate.js
-        env:
-          DEFAULT_LANG: 'fr'
-          TARGET_LANGS: 'en,es,de,zh,id,fil'
+      - name: Ensure i18n directory exists
+        run: mkdir -p _i18n
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
@@ -72,10 +92,6 @@ jobs:
     needs: build
     if: github.ref == 'refs/heads/main'
     
-    permissions:
-      pages: write
-      id-token: write
-    
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -84,4 +100,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3 
+        uses: actions/deploy-pages@v4 

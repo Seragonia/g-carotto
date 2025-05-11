@@ -39,11 +39,11 @@ p {
 }
 
 a {
-  color: $primary;
+  color: $accent;
   transition: color $transition-base;
   
   &:hover {
-    color: color-mix(in srgb, $primary 90%, black);
+    color: color-mix(in srgb, $accent 80%, black);
   }
 }
 

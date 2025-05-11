@@ -14,41 +14,70 @@ layout: default
   </div>
 </section>
 
-<section class="features-section">
-  <div class="section-header text-center">
-    <h2>Tout ce qu'il faut savoir sur Canaan Online</h2>
-    <p>Des guides complets et des ressources pour tous les aspects du jeu</p>
+<section class="hot-pages-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Popular Guides</h2>
+      <p>Our most useful resources to help you progress</p>
+    </div>
+    
+    <div class="hot-pages-grid">
+      {% assign hot_pages = site.data.pages | where: "hot", true %}
+      {% for page in hot_pages %}
+        <a href="{{ page.url | relative_url }}" class="hot-page-card" style="--card-color: {{ page.color }}">
+          <div class="hot-page-icon">
+            <i class="fas fa-{{ page.icon }}"></i>
+          </div>
+          <div class="hot-page-content">
+            <h3>{{ page.title }}</h3>
+            <p>{{ page.description }}</p>
+          </div>
+          <div class="hot-page-arrow">
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
   </div>
-  
-  <div class="card-grid">
-    <a href="{% include localized_url.html url='/game/getting-started/' %}" class="feature-card">
-      <div class="feature-card-image bg-primary"></div>
-      <div class="feature-card-content">
-        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].beginners_guide | default: "Beginner's Guide" }}</h3>
-        <p class="feature-card-description">{{ site.data.translations[site.active_lang].beginners_guide_desc | default: "Everything you need to know to start your adventure" }}</p>
-      </div>
-    </a>
-    <a href="{% include localized_url.html url='/classes/' %}" class="feature-card">
-      <div class="feature-card-image bg-secondary"></div>
-      <div class="feature-card-content">
-        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].classes | default: "Classes" }}</h3>
-        <p class="feature-card-description">{{ site.data.translations[site.active_lang].classes_desc | default: "Discover the different classes and their abilities" }}</p>
-      </div>
-    </a>
-    <a href="{% include localized_url.html url='/pets/' %}" class="feature-card">
-      <div class="feature-card-image bg-accent"></div>
-      <div class="feature-card-content">
-        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].pets | default: "Pets" }}</h3>
-        <p class="feature-card-description">{{ site.data.translations[site.active_lang].pets_desc | default: "All about pets, their skills and fusion" }}</p>
-      </div>
-    </a>
-    <a href="{% include localized_url.html url='/quests/' %}" class="feature-card">
-      <div class="feature-card-image" style="background-color: #5d6b98;"></div>
-      <div class="feature-card-content">
-        <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].quests | default: "Quests" }}</h3>
-        <p class="feature-card-description">{{ site.data.translations[site.active_lang].quests_desc | default: "Detailed guides for all game quests" }}</p>
-      </div>
-    </a>
+</section>
+
+<section class="features-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Tout ce qu'il faut savoir sur Canaan Online</h2>
+      <p>Des guides complets et des ressources pour tous les aspects du jeu</p>
+    </div>
+    
+    <div class="card-grid">
+      <a href="{% include localized_url.html url='/game/getting-started/' %}" class="feature-card">
+        <div class="feature-card-image bg-primary"></div>
+        <div class="feature-card-content">
+          <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].beginners_guide | default: "Beginner's Guide" }}</h3>
+          <p class="feature-card-description">{{ site.data.translations[site.active_lang].beginners_guide_desc | default: "Everything you need to know to start your adventure" }}</p>
+        </div>
+      </a>
+      <a href="{% include localized_url.html url='/classes/' %}" class="feature-card">
+        <div class="feature-card-image bg-secondary"></div>
+        <div class="feature-card-content">
+          <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].classes | default: "Classes" }}</h3>
+          <p class="feature-card-description">{{ site.data.translations[site.active_lang].classes_desc | default: "Discover the different classes and their abilities" }}</p>
+        </div>
+      </a>
+      <a href="{% include localized_url.html url='/pets/' %}" class="feature-card">
+        <div class="feature-card-image bg-accent"></div>
+        <div class="feature-card-content">
+          <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].pets | default: "Pets" }}</h3>
+          <p class="feature-card-description">{{ site.data.translations[site.active_lang].pets_desc | default: "All about pets, their skills and fusion" }}</p>
+        </div>
+      </a>
+      <a href="{% include localized_url.html url='/quests/' %}" class="feature-card">
+        <div class="feature-card-image" style="background-color: #5d6b98;"></div>
+        <div class="feature-card-content">
+          <h3 class="feature-card-title">{{ site.data.translations[site.active_lang].quests | default: "Quests" }}</h3>
+          <p class="feature-card-description">{{ site.data.translations[site.active_lang].quests_desc | default: "Detailed guides for all game quests" }}</p>
+        </div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -90,36 +119,38 @@ layout: default
 </section>
 
 <section class="latest-updates">
-  <div class="section-header text-center">
-    <h2>Dernières mises à jour</h2>
-    <p>Les nouveautés du site et du jeu</p>
-  </div>
-  
-  <div class="grid cols-2 gap-lg">
-    <div class="updates-card card p-lg">
-      <h3>Nouveautés du site</h3>
-      <ul class="updates-list">
-        {% for post in site.posts limit:5 %}
-          <li>
-            <span class="update-date">{{ post.date | date: "%d/%m/%Y" }}</span>
-            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </li>
-        {% endfor %}
-      </ul>
-      <a href="{{ '/actualites/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Voir toutes les actualités</a>
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Dernières mises à jour</h2>
+      <p>Les nouveautés du site et du jeu</p>
     </div>
     
-    <div class="updates-card card p-lg">
-      <h3>Mises à jour du jeu</h3>
-      <ul class="updates-list">
-        {% for update in site.data.game_updates limit:5 %}
-          <li>
-            <span class="update-date">{{ update.date }}</span>
-            <span>{{ update.title }}</span>
-          </li>
-        {% endfor %}
-      </ul>
-      <a href="{{ '/jeu/mises-a-jour/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Historique des mises à jour</a>
+    <div class="grid cols-2 gap-lg">
+      <div class="updates-card card p-lg">
+        <h3>Nouveautés du site</h3>
+        <ul class="updates-list">
+          {% for post in site.posts limit:5 %}
+            <li>
+              <span class="update-date">{{ post.date | date: "%d/%m/%Y" }}</span>
+              <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+        <a href="{{ '/actualites/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Voir toutes les actualités</a>
+      </div>
+      
+      <div class="updates-card card p-lg">
+        <h3>Mises à jour du jeu</h3>
+        <ul class="updates-list">
+          {% for update in site.data.game_updates limit:5 %}
+            <li>
+              <span class="update-date">{{ update.date }}</span>
+              <span>{{ update.title }}</span>
+            </li>
+          {% endfor %}
+        </ul>
+        <a href="{{ '/jeu/mises-a-jour/' | relative_url }}" class="btn btn-outline btn-sm mt-md">Historique des mises à jour</a>
+      </div>
     </div>
   </div>
 </section>

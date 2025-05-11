@@ -10,59 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
-  <style>
-    .search-form {
-      position: relative;
-    }
-    
-    .search-toggle {
-      background: none;
-      border: none;
-      color: inherit;
-      cursor: pointer;
-      padding: 8px;
-      font-size: 18px;
-    }
-    
-    .search-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: #fff;
-      border-radius: 4px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      padding: 10px;
-      display: none;
-      z-index: 100;
-      min-width: 280px;
-    }
-    
-    .search-dropdown.active {
-      display: block;
-    }
-    
-    .search-dropdown form {
-      display: flex;
-      width: 100%;
-    }
-    
-    .search-dropdown input[type="search"] {
-      flex: 1;
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 4px 0 0 4px;
-    }
-    
-    .search-dropdown button {
-      background: #ff7f00;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 0 4px 4px 0;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="icon" href="{{ '/assets/img/favicon.ico' | relative_url }}">
 </head>
 <body>
   <!-- Header -->
@@ -71,13 +19,152 @@
       <div class="header-container">
         <div class="site-logo">
           <a href="{% include localized_url.html url='/' %}">
-            <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}" style="width: 172px; height: auto;">
+            <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="{{ site.title }}" style="width: 172px; height: auto;">
           </a>
         </div>
         
+        <nav class="main-navigation">
+          <ul>
+            {% for section_entry in site.data.pages %}
+              {% assign section_key = section_entry[0] %}
+              {% assign section_data = section_entry[1] %}
+              
+              {% if section_data.subSections and section_data.subSections.size > 0 %}
+                {% comment %}Special case for home to fix always active issue{% endcomment %}
+                {% if section_key == '/' %}
+                  <li class="has-mega-menu {% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">
+                {% else %}
+                  <li class="has-mega-menu {% if page.url contains section_key %}active{% endif %}">
+                {% endif %}
+                  {% assign section_title = section_data.title[site.active_lang] | default: section_data.title['en'] %}
+                  <a href="{% include localized_url.html url=section_key %}">{{ section_title }}</a>
+                  
+                  <div class="mega-menu">
+                    <div class="mega-menu-inner">
+                      <div class="mega-menu-nav">
+                        <ul>
+                          {% for subsection_entry in section_data.subSections %}
+                            {% assign subsection_key = subsection_entry[0] %}
+                            {% assign subsection_data = subsection_entry[1] %}
+                            {% assign subsection_has_content = false %}
+                            {% if subsection_data.class == 'object' %}
+                              {% assign subsection_title = subsection_data.title[site.active_lang] | default: subsection_data.title['en'] %}
+                              {% if subsection_data.description or subsection_data.subSections %}
+                                {% assign subsection_has_content = true %}
+                              {% endif %}
+                            {% else %}
+                              {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
+                              {% assign subsection_description = false %}
+                              {% if subsection_data.description %}
+                                {% assign subsection_description = subsection_data.description[site.active_lang] | default: subsection_data.description['en'] %}
+                                {% assign subsection_has_content = true %}
+                              {% endif %}
+                            {% endif %}
+                            
+                            <li class="{% if page.url contains subsection_key %}active{% endif %}">
+                              {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}{% endcapture %}
+                              <a href="{% include localized_url.html url=subsection_url %}" data-target="mega-content-{{ section_key }}-{{ subsection_key }}" class="mega-menu-nav-link {% if forloop.first %}active{% endif %}">
+                                <span class="menu-icon">
+                                  {% if subsection_data.icon %}
+                                    {% if subsection_data.icon contains '/' %}
+                                      <img src="{{ subsection_data.icon | relative_url }}" alt="{{ subsection_title }}">
+                                    {% else %}
+                                      <img src="{{ '/assets/img/menu/' | append: subsection_data.icon | relative_url }}" alt="{{ subsection_title }}">
+                                    {% endif %}
+                                  {% else %}
+                                    <i class="fas fa-circle"></i>
+                                  {% endif %}
+                                </span>
+                                {{ subsection_title }}
+                              </a>
+                            </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                      
+                      <div class="mega-menu-contents">
+                        {% for subsection_entry in section_data.subSections %}
+                          {% assign subsection_key = subsection_entry[0] %}
+                          {% assign subsection_data = subsection_entry[1] %}
+                          
+                          {% if subsection_data.class == 'object' %}
+                            {% assign subsection_title = subsection_data.title[site.active_lang] | default: subsection_data.title['en'] %}
+                            {% assign subsection_description = subsection_data.description[site.active_lang] | default: subsection_data.description['en'] %}
+                          {% else %}
+                            {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
+                            {% assign subsection_description = subsection_data.description[site.active_lang] | default: subsection_data.description['en'] %}
+                          {% endif %}
+                          
+                          <div id="mega-content-{{ section_key }}-{{ subsection_key }}" class="mega-menu-content {% if forloop.first %}active{% endif %}">
+                            <div class="mega-menu-header">
+                              <div class="mega-menu-header-icon">
+                                {% if subsection_data.icon %}
+                                  {% if subsection_data.icon contains '/' %}
+                                    <img src="{{ subsection_data.icon | relative_url }}" alt="{{ subsection_title }}">
+                                  {% else %}
+                                    <img src="{{ '/assets/img/menu/' | append: subsection_data.icon | relative_url }}" alt="{{ subsection_title }}">
+                                  {% endif %}
+                                {% else %}
+                                  <i class="fas fa-folder fa-2x"></i>
+                                {% endif %}
+                              </div>
+                              <div class="mega-menu-header-text">
+                                <h3>{{ subsection_title }}</h3>
+                                {% if subsection_description %}
+                                  <p>{{ subsection_description }}</p>
+                                {% endif %}
+                              </div>
+                            </div>
+                            
+                            {% if subsection_data.subSections and subsection_data.subSections.size > 0 %}
+                              <div class="mega-menu-sublinks">
+                                <div class="mega-menu-sublink-col">
+                                  <ul>
+                                    {% for third_level_entry in subsection_data.subSections %}
+                                      {% assign third_level_key = third_level_entry[0] %}
+                                      {% assign third_level_data = third_level_entry[1] %}
+                                      
+                                      {% if third_level_data.class == 'object' %}
+                                        {% assign third_level_title = third_level_data.title[site.active_lang] | default: third_level_data.title['en'] %}
+                                      {% else %}
+                                        {% assign third_level_title = third_level_data[site.active_lang] | default: third_level_data['en'] %}
+                                      {% endif %}
+                                      
+                                      <li class="{% if page.url contains third_level_key %}active{% endif %}">
+                                        {% capture third_level_url %}{{ section_key }}/{{ subsection_key }}/{{ third_level_key }}{% endcapture %}
+                                        <a href="{% include localized_url.html url=third_level_url %}">{{ third_level_title }}</a>
+                                      </li>
+                                    {% endfor %}
+                                  </ul>
+                                </div>
+                              </div>
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              {% else %}
+                {% comment %}Special case for home to fix always active issue{% endcomment %}
+                {% if section_key == '/' %}
+                  <li class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">
+                {% else %}
+                  <li class="{% if page.url contains section_key %}active{% endif %}">
+                {% endif %}
+                  {% assign section_title = section_data.title[site.active_lang] | default: section_data.title['en'] %}
+                  <a href="{% include localized_url.html url=section_key %}">{{ section_title }}</a>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+          <!-- Add the mega menu overlay element -->
+          <div class="mega-menu-overlay"></div>
+        </nav>
+        
         <div class="language-selector">
           <button class="language-current">
-            <img src="{{ '/assets/images/flags/' | append: site.active_lang | append: '.png' | relative_url }}" 
+            <img src="{{ '/assets/img/flags/' | append: site.active_lang | append: '.png' | relative_url }}" 
                 alt="{{ site.data.translations[site.active_lang].lang_name | default: site.active_lang }}">
             <i class="fas fa-chevron-down language-arrow"></i>
           </button>
@@ -85,11 +172,11 @@
             {% for lang in site.languages %}
               {% if lang == 'fr' %}
                 <!-- French link with JavaScript to force navigation to root -->
-                <a href="javascript:void(0)" onclick="window.location.href='/'" class="{% if site.active_lang == lang %}active{% endif %}" data-lang="{{ lang }}">
+                <a href="javascript:void(0)" onclick="window.location.href='{{ site.baseurl }}/'" class="{% if site.active_lang == lang %}active{% endif %}" data-lang="{{ lang }}">
               {% else %}
                 <a href="{% include localized_url.html lang=lang url=page.url %}" class="{% if site.active_lang == lang %}active{% endif %}" data-lang="{{ lang }}">
               {% endif %}
-                <img src="{{ '/assets/images/flags/' | append: lang | append: '.png' | relative_url }}" 
+                <img src="{{ '/assets/img/flags/' | append: lang | append: '.png' | relative_url }}" 
                      alt="{{ site.data.translations[lang].lang_name | default: lang }}">
                 {% if lang == 'fr' %}
                   <span>Français</span>
@@ -113,33 +200,6 @@
           </div>
         </div>
         
-        <nav class="main-navigation">
-          <ul>
-            {% for section_entry in site.data.pages %}
-              {% assign section_key = section_entry[0] %}
-              {% assign section_data = section_entry[1] %}
-              <li class="{% if page.url contains section_key %}active{% endif %}">
-                {% assign section_title = section_data.title[site.active_lang] | default: section_data.title['en'] %}
-                
-                <a href="{% include localized_url.html url=section_key %}">{{ section_title }}</a>
-                {% if section_data.subSections and section_data.subSections.size > 0 %}
-                  <ul class="sub-menu">
-                    {% for subsection_entry in section_data.subSections %}
-                      {% assign subsection_key = subsection_entry[0] %}
-                      {% assign subsection_data = subsection_entry[1] %}
-                      <li class="{% if page.url contains subsection_key %}active{% endif %}">
-                        {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
-                        {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}/{% endcapture %}
-                        <a href="{{ subsection_url | prepend: '/' }}">{{ subsection_title }}</a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-              </li>
-            {% endfor %}
-          </ul>
-        </nav>
-        
         <div class="search-form">
           <button type="button" class="search-toggle" aria-label="{{ site.data.translations[site.active_lang].search | default: site.data.translations['en'].search }}">
             <i class="fas fa-search"></i>
@@ -159,6 +219,87 @@
     </div>
   </header>
   
+  <!-- Full Page Overlay -->
+  <div class="full-page-overlay"></div>
+  
+  <!-- Mobile Menu Backdrop -->
+  <div class="mobile-menu-backdrop"></div>
+  
+  <!-- Mobile Menu -->
+  <div class="mobile-menu-container">
+    <div class="mobile-menu-inner">
+      <ul class="mobile-nav">
+        {% for section_entry in site.data.pages %}
+          {% assign section_key = section_entry[0] %}
+          {% assign section_data = section_entry[1] %}
+          <li class="mobile-nav-item">
+            <div class="mobile-nav-item-inner">
+              {% assign section_title = section_data.title[site.active_lang] | default: section_data.title['en'] %}
+              {% comment %}Special case for home to fix always active issue{% endcomment %}
+              {% if section_key == '/' %}
+                <a href="{% include localized_url.html url=section_key %}" class="{% if page.url == '/' or page.url == '/index.html' %}active{% endif %}">{{ section_title }}</a>
+              {% else %}
+                <a href="{% include localized_url.html url=section_key %}" class="{% if page.url contains section_key %}active{% endif %}">{{ section_title }}</a>
+              {% endif %}
+              
+              {% if section_data.subSections and section_data.subSections.size > 0 %}
+                <button class="mobile-dropdown-toggle" aria-label="Toggle submenu">
+                  <i class="fas fa-chevron-down"></i>
+                </button>
+              {% endif %}
+            </div>
+            
+            {% if section_data.subSections and section_data.subSections.size > 0 %}
+              <ul class="mobile-dropdown">
+                {% for subsection_entry in section_data.subSections %}
+                  {% assign subsection_key = subsection_entry[0] %}
+                  {% assign subsection_data = subsection_entry[1] %}
+                  <li class="mobile-nav-item">
+                    <div class="mobile-nav-item-inner">
+                      {% if subsection_data.class == 'object' %}
+                        {% assign subsection_title = subsection_data.title[site.active_lang] | default: subsection_data.title['en'] %}
+                      {% else %}
+                        {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
+                      {% endif %}
+                      {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}{% endcapture %}
+                      <a href="{% include localized_url.html url=subsection_url %}">{{ subsection_title }}</a>
+                      
+                      {% if subsection_data.subSections and subsection_data.subSections.size > 0 %}
+                        <button class="mobile-dropdown-toggle" aria-label="Toggle submenu">
+                          <i class="fas fa-chevron-down"></i>
+                        </button>
+                      {% endif %}
+                    </div>
+                    
+                    {% if subsection_data.subSections and subsection_data.subSections.size > 0 %}
+                      <ul class="mobile-dropdown">
+                        {% for third_level_entry in subsection_data.subSections %}
+                          {% assign third_level_key = third_level_entry[0] %}
+                          {% assign third_level_data = third_level_entry[1] %}
+                          <li class="mobile-nav-item">
+                            <div class="mobile-nav-item-inner">
+                              {% if third_level_data.class == 'object' %}
+                                {% assign third_level_title = third_level_data.title[site.active_lang] | default: third_level_data.title['en'] %}
+                              {% else %}
+                                {% assign third_level_title = third_level_data[site.active_lang] | default: third_level_data['en'] %}
+                              {% endif %}
+                              {% capture third_level_url %}{{ section_key }}/{{ subsection_key }}/{{ third_level_key }}{% endcapture %}
+                              <a href="{% include localized_url.html url=third_level_url %}">{{ third_level_title }}</a>
+                            </div>
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
   <!-- Submenu bar (shown only when in a parent section) -->
   {% assign current_section = page.url | split: '/' | slice: 1 | first %}
   {% for section_entry in site.data.pages %}
@@ -173,8 +314,8 @@
             {% assign subsection_data = subsection_entry[1] %}
             <li class="{% if page.url contains subsection_key %}active{% endif %}">
               {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
-              {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}/{% endcapture %}
-              <a href="{{ subsection_url | prepend: '/' }}">{{ subsection_title }}</a>
+              {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}{% endcapture %}
+              <a href="{% include localized_url.html url=subsection_url %}">{{ subsection_title }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -182,45 +323,6 @@
     </div>
     {% endif %}
   {% endfor %}
-  
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <ul>
-      <!-- Don't show explicit Home/Accueil if it's already in the menu -->
-      {% if home_in_menu == false %}
-      <li class="{% if page.url == '/' or page.url == '/home/' %}active{% endif %}">
-        {% assign home_title = site.data.translations[site.active_lang].home | default: site.data.translations['en'].home %}
-        {% if site.data.content['0-home'] and site.data.content['0-home'].translations.title[site.active_lang] %}
-          {% assign home_title = site.data.content['0-home'].translations.title[site.active_lang] %}
-        {% endif %}
-        <a href="{% include localized_url.html url='/' %}">{{ home_title }}</a>
-      </li>
-      {% endif %}
-      
-      {% for section_entry in site.data.pages %}
-        {% assign section_key = section_entry[0] %}
-        {% assign section_data = section_entry[1] %}
-        <li class="menu-item-has-children {% if page.url contains section_key %}active{% endif %}">
-          {% assign section_title = section_data.title[site.active_lang] | default: section_data.title['en'] %}
-          
-          <a href="{% include localized_url.html url=section_key %}">{{ section_title }}</a>
-          {% if section_data.subSections and section_data.subSections.size > 0 %}
-            <ul class="sub-menu {% if page.url contains section_key %}active{% endif %}">
-              {% for subsection_entry in section_data.subSections %}
-                {% assign subsection_key = subsection_entry[0] %}
-                {% assign subsection_data = subsection_entry[1] %}
-                <li class="{% if page.url contains subsection_key %}active{% endif %}">
-                  {% assign subsection_title = subsection_data[site.active_lang] | default: subsection_data['en'] %}
-                  {% capture subsection_url %}{{ section_key }}/{{ subsection_key }}/{% endcapture %}
-                  <a href="{{ subsection_url | prepend: '/' }}">{{ subsection_title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          {% endif %}
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
   
   <!-- Main Content -->
   <main class="main-content">
@@ -240,7 +342,7 @@
       <div class="footer-widgets">
         <div class="footer-widget footer-about">
           <h3>{{ site.data.translations[site.active_lang].about | default: site.data.translations['en'].about }}</h3>
-          <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="{{ site.title }}">
+          <img src="{{ '/assets/img/logo.png' | relative_url }}" alt="{{ site.title }}">
           <p>{{ site.data.translations[site.active_lang].site_description | default: site.data.translations['en'].site_description }}</p>
           <div class="footer-social">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -266,58 +368,133 @@
     </div>
   </footer>
   
-  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuToggle = document.querySelector('.nav-toggle');
-      const mobileMenu = document.querySelector('.mobile-menu');
-      const menuItemsWithChildren = document.querySelectorAll('.menu-item-has-children');
-      const searchToggle = document.querySelector('.search-toggle');
-      const searchDropdown = document.querySelector('.search-dropdown');
-      
-      if (mobileMenuToggle && mobileMenu) {
-        mobileMenuToggle.addEventListener('click', function() {
-          mobileMenu.classList.toggle('active');
+      // Set header height as CSS variable for backdrop positioning
+      const header = document.querySelector('.site-header');
+      if (header) {
+        document.documentElement.style.setProperty('--header-height', header.getBoundingClientRect().height + 'px');
+        window.addEventListener('resize', function() {
+          document.documentElement.style.setProperty('--header-height', header.getBoundingClientRect().height + 'px');
         });
       }
       
-      if (searchToggle && searchDropdown) {
-        searchToggle.addEventListener('click', function() {
-          searchDropdown.classList.toggle('active');
-          if (searchDropdown.classList.contains('active')) {
-            searchDropdown.querySelector('input[type="search"]').focus();
-          }
-        });
-        
-        document.addEventListener('click', function(event) {
-          if (!searchToggle.contains(event.target) && !searchDropdown.contains(event.target)) {
-            searchDropdown.classList.remove('active');
-          }
-        });
-      }
-      
-      menuItemsWithChildren.forEach(function(item) {
-        const link = item.querySelector('a');
-        
-        if (link) {
-          link.addEventListener('click', function(e) {
-            if (window.innerWidth <= 1024) {
-              e.preventDefault();
-              const subMenu = this.nextElementSibling;
-              if (subMenu) {
-                subMenu.classList.toggle('active');
-                item.classList.toggle('active');
-              }
+      // Mega menu content switching on hover
+      const megaMenuNavLinks = document.querySelectorAll('.mega-menu-nav-link');
+      if (megaMenuNavLinks.length > 0) {
+        megaMenuNavLinks.forEach(function(link) {
+          link.addEventListener('mouseenter', function() {
+            const targetId = this.getAttribute('data-target');
+            if (!targetId) return;
+            
+            const parentMenu = this.closest('.mega-menu');
+            if (!parentMenu) return;
+            
+            // Remove active class from all nav links
+            parentMenu.querySelectorAll('.mega-menu-nav-link').forEach(function(navLink) {
+              navLink.classList.remove('active');
+            });
+            
+            // Remove active class from all content panels
+            parentMenu.querySelectorAll('.mega-menu-content').forEach(function(content) {
+              content.classList.remove('active');
+            });
+            
+            // Add active class to current nav link and content
+            this.classList.add('active');
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+              targetContent.classList.add('active');
             }
           });
+        });
+      }
+      
+      // Mobile menu toggle
+      const mobileMenuToggle = document.querySelector('.nav-toggle');
+      const mobileMenuContainer = document.querySelector('.mobile-menu-container');
+      const mobileMenuBackdrop = document.querySelector('.mobile-menu-backdrop');
+      
+      if (mobileMenuToggle && mobileMenuContainer) {
+        mobileMenuToggle.addEventListener('click', function() {
+          mobileMenuContainer.classList.toggle('active');
+          if (mobileMenuBackdrop) {
+            mobileMenuBackdrop.classList.toggle('active');
+          }
+          document.body.classList.toggle('menu-open');
+        });
+        
+        if (mobileMenuBackdrop) {
+          mobileMenuBackdrop.addEventListener('click', function() {
+            mobileMenuContainer.classList.remove('active');
+            mobileMenuBackdrop.classList.remove('active');
+            document.body.classList.remove('menu-open');
+          });
         }
+      }
+      
+      // Mega menu and overlay handling
+      const megaMenuItems = document.querySelectorAll('.has-mega-menu');
+      const fullPageOverlay = document.querySelector('.full-page-overlay');
+      
+      if (megaMenuItems.length > 0 && fullPageOverlay) {
+        megaMenuItems.forEach(function(item) {
+          item.addEventListener('mouseenter', function() {
+            fullPageOverlay.classList.add('active');
+            document.body.classList.add('menu-open');
+          });
+          
+          item.addEventListener('mouseleave', function() {
+            fullPageOverlay.classList.remove('active');
+            document.body.classList.remove('menu-open');
+          });
+        });
+        
+        fullPageOverlay.addEventListener('click', function() {
+          fullPageOverlay.classList.remove('active');
+          document.body.classList.remove('menu-open');
+        });
+      }
+      
+      // Mobile dropdown toggles
+      const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+      
+      mobileDropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+          // Find the closest parent mobile-nav-item
+          const navItem = this.closest('.mobile-nav-item');
+          // Get the next sibling after mobile-nav-item-inner which is the dropdown
+          const dropdown = navItem.querySelector('.mobile-dropdown');
+          
+          dropdown.classList.toggle('active');
+          
+          // Rotate icon
+          const icon = this.querySelector('i');
+          if (icon) {
+            icon.classList.toggle('fa-chevron-up');
+            icon.classList.toggle('fa-chevron-down');
+          }
+        });
       });
       
-      document.querySelectorAll('li.active').forEach(function(li) {
-        if (!li.textContent.trim() && !li.querySelector('a[href]')) {
-          li.remove();
-        }
-      });
+      // Scroll to top button
+      const scrollToTopButton = document.querySelector('.scroll-to-top');
+      if (scrollToTopButton) {
+        window.addEventListener('scroll', function() {
+          if (window.pageYOffset > 300) {
+            scrollToTopButton.classList.add('visible');
+          } else {
+            scrollToTopButton.classList.remove('visible');
+          }
+        });
+        
+        scrollToTopButton.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
     });
   </script>
 </body>
