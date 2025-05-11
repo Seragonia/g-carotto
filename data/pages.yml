@@ -95,6 +95,70 @@ game:
         id: Cara memulai petualangan Anda
         fil: Paano simulan ang iyong pakikipagsapalaran
       icon: /assets/img/item/16.png
+      subSections:
+        shortcuts:
+          fr: Raccourcis
+          en: Shortcuts
+          es: Atajos
+          de: Tastenkürzel
+          zh: 快捷键
+          id: Pintasan Cepat
+          fil: Mga pintasan ng mabilis
+          description:
+            fr: Raccourcis clés pour commencer votre aventure
+            en: Key shortcuts to start your adventure
+            es: Atajos clave para comenzar tu aventura
+            de: Schlüsselkürzel zum Starten Ihres Abenteuers
+            zh: 快捷键开始您的冒险
+            id: Pintasan cepat untuk memulai petualangan Anda
+            fil: Mga pintasan ng mabilis para simulan ang iyong pakikipagsapalaran
+        dailyRewards:
+          fr: Récompenses quotidiennes
+          en: Daily Rewards
+          es: Recompensas diarias
+          de: Tägliche Belohnungen
+          zh: 每日奖励
+          id: Penghargaan Harian
+          fil: Mga pagkain na nagbibigay ng mga kagandahan
+          description:
+            fr: Les récompenses quotidiennes vous permettent de gagner des récompenses spéciales chaque jour.
+            en: Daily rewards allow you to earn special rewards every day.
+            es: Las recompensas diarias te permiten ganar recompensas especiales cada día.
+            de: Tägliche Belohnungen erlauben es dir, besondere Belohnungen jeden Tag zu erhalten.
+            zh: 每日奖励允许您每天获得特殊奖励。
+            id: Penghargaan harian memungkinkan Anda untuk memperoleh hadiah khusus setiap hari.
+            fil: Ang mga pagkain na nagbibigay ng mga kagandahan ay nagbibigay ng mga kagandahan.
+        guide:
+          fr: Guide du jeu
+          en: Game Guide
+          es: Guía del juego
+          de: Spielleitfaden
+          zh: 游戏指南
+          id: Panduan permainan
+          fil: Panduan ng laro
+          description:
+            fr: Guide pour commencer et jouer
+            en: Guide to start and play
+            es: Guía para empezar y jugar
+            de: Leitfaden zum Starten und Spielen
+            zh: 指南开始和玩游戏
+            id: Panduan untuk memulai dan bermain
+            fil: Panduan ng laro para simulan at maglaro
+        ui:
+          fr: Interface de jeu
+          en: Game UI
+          es: Interfaz de juego
+          de: Spiel-UI
+          zh: 游戏界面
+          id: Antarmuka permainan
+          fil: Antarmuka ng laro
+          description:
+            fr: Comment utiliser l'interface de jeu
+            en: How to use the game interface
+            es: Cómo usar la interfaz de juego
+            de: Wie man die Spiel-UI verwendet
+            zh: 如何使用游戏界面
+            id: Cara menggunakan antarmuka permainan
     character:
       fr: Personnage
       en: Character
